@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useForm, ValidationError } from '@formspree/react';
 import { Card, CardContent } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -31,6 +32,7 @@ export function EarlyAccess() {
     country: "",
     selection: ""
   });
+  const [state, handleSubmit] = useForm("mnngdjpq");
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
@@ -76,8 +78,7 @@ export function EarlyAccess() {
           </div>
           <CardContent className="p-10 md:p-12">
             <form
-              action="https://formspree.io/f/mnngdjpq"
-              method="POST"
+              onSubmit={handleSubmit}
               className="space-y-7"
               autoComplete="off"
             >
@@ -103,6 +104,7 @@ export function EarlyAccess() {
                     required
                     className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
                   />
+                  <ValidationError prefix="Name" field="name" errors={state.errors} />
                 </div>
                 {/* Email */}
                 <div className="space-y-2">
@@ -120,6 +122,7 @@ export function EarlyAccess() {
                     required
                     className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
                   />
+                  <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
@@ -139,6 +142,7 @@ export function EarlyAccess() {
                     required
                     className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
                   />
+                  <ValidationError prefix="City" field="city" errors={state.errors} />
                 </div>
                 {/* Country */}
                 <div className="space-y-2">
@@ -156,6 +160,7 @@ export function EarlyAccess() {
                     required
                     className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
                   />
+                  <ValidationError prefix="Country" field="country" errors={state.errors} />
                 </div>
               </div>
               {/* Trick / Treat */}
@@ -169,7 +174,7 @@ export function EarlyAccess() {
                 >
                   <div className="group">
                     <div
-                      className={`flex items-center space-x-3 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-6 cursor-pointer transition-all duration-200 ${
+                      className={`flex items-center space-x-3 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-7 cursor-pointer transition-all duration-200 ${
                         formData.selection === "trick" ? "ring-2 ring-[#ff5722] border-[#ff5722] scale-105" : ""
                       }`}
                     >
@@ -185,7 +190,7 @@ export function EarlyAccess() {
                   </div>
                   <div className="group">
                     <div
-                      className={`flex items-center space-x-3 bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-6 cursor-pointer transition-all duration-200 ${
+                      className={`flex items-center space-x-3 bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-7 cursor-pointer transition-all duration-200 ${
                         formData.selection === "treat" ? "ring-2 ring-[#e91e63] border-[#e91e63] scale-105" : ""
                       }`}
                     >
@@ -204,7 +209,7 @@ export function EarlyAccess() {
               {/* Optional onboarding tip */}
               {getOnboardingTip() && (
                 <div
-                  className={`bg-gradient-to-r ${getOnboardingTip()?.color} border-2 rounded-2xl p-6 transition-all mt-2`}
+                  className={`bg-gradient-to-r ${getOnboardingTip()?.color} border-2 rounded-2xl p-8 transition-all mt-4`}
                 >
                   <div className="flex items-start gap-4">
                     <span className="text-3xl">{getOnboardingTip()?.icon}</span>
@@ -215,12 +220,35 @@ export function EarlyAccess() {
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-4 font-bold text-lg shadow-lg hover:scale-[1.03] hover:shadow-xl transition-all duration-200"
+                disabled={state.submitting}
               >
                 <Lock className="h-5 w-5 mr-2" />
-                Secure My VIP Spot
+                {state.submitting ? 'Submitting...' : 'Secure My VIP Spot'}
                 <Sparkles className="h-5 w-5 ml-2" />
               </Button>
+              <ValidationError errors={state.errors} />
+            {state.succeeded && (
+              <div className="mt-6 text-green-600 text-center font-semibold animate-in fade-in">
+                Thanks for joining!
+              </div>
+            )}
             </form>
+            {/* Stats and launch date */}
+            <div className="mt-8 space-y-4">
+              <p className="text-sm text-[#8d6e63] flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-4 w-4 text-[#ff5722]"><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657A8 8 0 118 8v8h8a8 8 0 011.657-1.343z" /></svg>
+                Join over 5,000+ people waiting for launch day
+              </p>
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#ff5722]/10 to-[#e91e63]/10 border border-[#ff5722]/20 rounded-full px-6 py-3">
+                  <span className="text-2xl animate-pulse">🎃</span>
+                  <p className="text-[#ff5722] font-bold">
+                    Launch Date: October 31st
+                  </p>
+                  <span className="text-2xl animate-pulse">🎃</span>
+                </div>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>
