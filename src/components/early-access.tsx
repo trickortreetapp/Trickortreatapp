@@ -39,48 +39,48 @@ export function EarlyAccess() {
 			[field]: value,
 		}));
 	};
-	return (
-	<section
-			id="early-access"
-			className="py-24 px-2 md:px-0 bg-gradient-to-br from-[#fff3e0] via-[#fff8f3] to-[#fefbf8] text-[#4e342e] min-h-screen flex items-center justify-center relative overflow-hidden"
-			style={{ fontFamily: 'Inter, sans-serif' }}
-		>
-			{/* Figma-style background decorations */}
-			<div className="absolute inset-0 pointer-events-none">
-				<div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-[#ff5722]/20 to-[#e91e63]/10 rounded-full blur-3xl opacity-60 animate-pulse" />
-				<div className="absolute bottom-0 right-0 w-56 h-56 bg-gradient-to-br from-[#e91e63]/20 to-[#ff7043]/10 rounded-full blur-3xl opacity-60 animate-pulse delay-1000" />
-				<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff5722]/10 to-[#e91e63]/10 rounded-full blur-3xl opacity-40 animate-pulse" />
-			</div>
-			<div className="w-full max-w-2xl mx-auto z-10">
-				<div className="text-center mb-10">
-					<div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#ff5722] to-[#e91e63] text-white shadow-lg text-lg font-semibold tracking-wide animate-pulse">
-						<Lock className="h-5 w-5" />
-						Invitation Only
-						<Star className="h-5 w-5" />
-					</div>
-					<h2 className="mt-8 mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-[#4e342e]">
-						Something Magical
-						<span className="block text-transparent bg-gradient-to-r from-[#ff5722] to-[#e91e63] bg-clip-text">Is Coming...</span>
-					</h2>
-					<p className="text-lg md:text-xl text-[#8d6e63] max-w-xl mx-auto leading-relaxed">
-						The most exclusive dating experience is almost here. Where stunning ladies meet generous gentlemen, and every connection is worth the wait. 🎩💎
-					</p>
+		return (
+			<section
+				id="early-access"
+				className="py-28 px-2 md:px-0 bg-gradient-to-br from-[#fff3e0] via-[#fff8f3] to-[#fefbf8] text-[#4e342e] min-h-screen flex items-center justify-center relative overflow-hidden"
+				style={{ fontFamily: 'Inter, sans-serif' }}
+			>
+				{/* Premium background decorations */}
+				<div className="absolute inset-0 pointer-events-none">
+					<div className="absolute top-0 left-0 w-48 h-48 bg-gradient-to-br from-[#ff5722]/30 to-[#e91e63]/20 rounded-full blur-3xl opacity-70 animate-pulse" />
+					<div className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-br from-[#e91e63]/30 to-[#ff7043]/20 rounded-full blur-3xl opacity-70 animate-pulse delay-1000" />
+					<div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[30rem] h-[30rem] bg-gradient-to-br from-[#ff5722]/20 to-[#e91e63]/20 rounded-full blur-3xl opacity-50 animate-pulse" />
 				</div>
-				<Card className="bg-white/95 backdrop-blur-2xl border-0 shadow-2xl max-w-2xl mx-auto mb-12 overflow-hidden">
-					<div className="bg-gradient-to-r from-[#ff5722] to-[#e91e63] p-8 text-white flex flex-col items-center">
-						<div className="flex items-center gap-3 mb-2">
-							<Crown className="h-7 w-7" />
-							<h3 className="text-2xl md:text-3xl font-bold tracking-tight">Get VIP Early Access</h3>
-							<Gift className="h-7 w-7" />
+				<div className="w-full max-w-2xl mx-auto z-10">
+					<div className="text-center mb-12">
+						<div className="inline-flex items-center gap-2 px-10 py-4 rounded-full bg-gradient-to-r from-[#ff5722] to-[#e91e63] text-white shadow-xl text-xl font-bold tracking-wide animate-pulse">
+							<Lock className="h-6 w-6" />
+							VIP Waitlist
+							<Star className="h-6 w-6" />
 						</div>
-						<p className="text-white/90 text-base md:text-lg">Join the exclusive circle of early adopters</p>
+						<h2 className="mt-10 mb-5 text-5xl md:text-6xl font-extrabold leading-tight tracking-tight text-[#4e342e] drop-shadow-lg">
+							Unlock Early Access
+							<span className="block text-transparent bg-gradient-to-r from-[#ff5722] to-[#e91e63] bg-clip-text">to Trick or Treet</span>
+						</h2>
+						<p className="text-xl md:text-2xl text-[#8d6e63] max-w-2xl mx-auto leading-relaxed font-medium">
+							Be the first to experience the most exclusive dating app. Join the waitlist for VIP perks, launch bonuses, and a magical community. 🎩💎
+						</p>
 					</div>
-					<CardContent className="p-8 md:p-12">
-						<form
-							onSubmit={handleSubmit}
-							className="space-y-8"
-							autoComplete="off"
-						>
+					<Card className="bg-white/95 backdrop-blur-2xl border-0 shadow-2xl max-w-2xl mx-auto mb-14 overflow-hidden">
+						<div className="bg-gradient-to-r from-[#ff5722] to-[#e91e63] p-10 text-white flex flex-col items-center">
+							<div className="flex items-center gap-4 mb-2">
+								<Crown className="h-8 w-8" />
+								<h3 className="text-3xl md:text-4xl font-bold tracking-tight">Join the VIP Waitlist</h3>
+								<Gift className="h-8 w-8" />
+							</div>
+							<p className="text-white/90 text-lg md:text-xl font-medium">Early birds get exclusive rewards!</p>
+						</div>
+						<CardContent className="p-10 md:p-14">
+							<form
+								onSubmit={handleSubmit}
+								className="space-y-10"
+								autoComplete="off"
+							>
 							{/* Honeypot field for spam protection */}
 							<div style={{ display: 'none' }} aria-hidden="true">
 								<label htmlFor="website">Website</label>
