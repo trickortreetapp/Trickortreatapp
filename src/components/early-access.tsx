@@ -67,7 +67,7 @@ export function EarlyAccess() {
             The most exclusive dating experience is almost here. Where stunning ladies meet generous gentlemen, and every connection is worth the wait. 🎩💎
           </p>
         </div>
-        <Card className="bg-white/90 backdrop-blur-lg border-0 shadow-2xl max-w-2xl mx-auto mb-12 overflow-hidden">
+        <Card className="bg-white/95 backdrop-blur-2xl border-0 shadow-2xl max-w-2xl mx-auto mb-12 overflow-hidden">
           <div className="bg-gradient-to-r from-[#ff5722] to-[#e91e63] p-8 text-white flex flex-col items-center">
             <div className="flex items-center gap-3 mb-2">
               <Crown className="h-7 w-7" />
@@ -76,10 +76,10 @@ export function EarlyAccess() {
             </div>
             <p className="text-white/90 text-base md:text-lg">Join the exclusive circle of early adopters</p>
           </div>
-          <CardContent className="p-10 md:p-12">
+          <CardContent className="p-8 md:p-12">
             <form
               onSubmit={handleSubmit}
-              className="space-y-7"
+              className="space-y-8"
               autoComplete="off"
             >
               {/* Honeypot field for spam protection */}
@@ -87,7 +87,7 @@ export function EarlyAccess() {
                 <label htmlFor="website">Website</label>
                 <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Full Name */}
                 <div className="space-y-2">
                   <Label htmlFor="name" className="flex items-center gap-2 text-base font-medium text-[#5d4037]">
@@ -102,7 +102,7 @@ export function EarlyAccess() {
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     required
-                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
+                    className="rounded-2xl border-2 border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-5 py-4 text-base bg-gray-50 placeholder:text-gray-400 shadow-sm transition-all"
                   />
                   <ValidationError prefix="Name" field="name" errors={state.errors} />
                 </div>
@@ -120,12 +120,12 @@ export function EarlyAccess() {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     required
-                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
+                    className="rounded-2xl border-2 border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-5 py-4 text-base bg-gray-50 placeholder:text-gray-400 shadow-sm transition-all"
                   />
                   <ValidationError prefix="Email" field="email" errors={state.errors} />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* City */}
                 <div className="space-y-2">
                   <Label htmlFor="city" className="flex items-center gap-2 text-base font-medium text-[#5d4037]">
@@ -140,7 +140,7 @@ export function EarlyAccess() {
                     value={formData.city}
                     onChange={(e) => handleInputChange("city", e.target.value)}
                     required
-                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
+                    className="rounded-2xl border-2 border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-5 py-4 text-base bg-gray-50 placeholder:text-gray-400 shadow-sm transition-all"
                   />
                   <ValidationError prefix="City" field="city" errors={state.errors} />
                 </div>
@@ -158,7 +158,7 @@ export function EarlyAccess() {
                     value={formData.country}
                     onChange={(e) => handleInputChange("country", e.target.value)}
                     required
-                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
+                    className="rounded-2xl border-2 border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-5 py-4 text-base bg-gray-50 placeholder:text-gray-400 shadow-sm transition-all"
                   />
                   <ValidationError prefix="Country" field="country" errors={state.errors} />
                 </div>
@@ -169,16 +169,16 @@ export function EarlyAccess() {
                 <RadioGroup
                   value={formData.selection}
                   onValueChange={(value: string) => handleInputChange("selection", value)}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-6"
                   name="selection"
                 >
                   <div className="group">
                     <div
-                      className={`flex items-center space-x-3 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-7 cursor-pointer transition-all duration-200 ${
-                        formData.selection === "trick" ? "ring-2 ring-[#ff5722] border-[#ff5722] scale-105" : ""
+                      className={`flex items-center space-x-3 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-7 cursor-pointer transition-all duration-200 shadow-sm ${
+                        formData.selection === "trick" ? "ring-2 ring-[#ff5722] border-[#ff5722] scale-105 bg-amber-100/80" : "hover:bg-amber-100/60"
                       }`}
                     >
-                      <RadioGroupItem id="trick" value="trick" name="selection" className="border-orange-400" />
+                      <RadioGroupItem id="trick" value="trick" name="selection" className="border-orange-400 size-5" />
                       <Label htmlFor="trick" className="flex items-center gap-3 flex-1 cursor-pointer">
                         <span className="text-3xl">🎩</span>
                         <div>
@@ -190,11 +190,11 @@ export function EarlyAccess() {
                   </div>
                   <div className="group">
                     <div
-                      className={`flex items-center space-x-3 bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-7 cursor-pointer transition-all duration-200 ${
-                        formData.selection === "treat" ? "ring-2 ring-[#e91e63] border-[#e91e63] scale-105" : ""
+                      className={`flex items-center space-x-3 bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-7 cursor-pointer transition-all duration-200 shadow-sm ${
+                        formData.selection === "treat" ? "ring-2 ring-[#e91e63] border-[#e91e63] scale-105 bg-pink-100/80" : "hover:bg-pink-100/60"
                       }`}
                     >
-                      <RadioGroupItem id="treat" value="treat" name="selection" className="border-pink-400" />
+                      <RadioGroupItem id="treat" value="treat" name="selection" className="border-pink-400 size-5" />
                       <Label htmlFor="treat" className="flex items-center gap-3 flex-1 cursor-pointer">
                         <span className="text-3xl">🎁</span>
                         <div>
@@ -219,7 +219,7 @@ export function EarlyAccess() {
               )}
               <Button
                 type="submit"
-                className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-4 font-bold text-lg shadow-lg hover:scale-[1.03] hover:shadow-xl transition-all duration-200"
+                className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-4 font-bold text-lg shadow-lg hover:scale-[1.04] hover:shadow-xl transition-all duration-200 focus:ring-2 focus:ring-[#ff5722]/40"
                 disabled={state.submitting}
               >
                 <Lock className="h-5 w-5 mr-2" />
