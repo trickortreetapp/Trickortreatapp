@@ -31,7 +31,7 @@ export function DownloadApp({ phoneImage }: DownloadAppProps) {
             </h2>
             
             <p className="text-xl text-gray-200 mb-8 max-w-lg">
-              Download the Trick or Treat app and never miss a chance to connect. 
+              Download the Trick or Treet app and never miss a chance to connect. 
               Swipe, chat, and send treats on the go!
             </p>
             
@@ -102,7 +102,7 @@ export function DownloadApp({ phoneImage }: DownloadAppProps) {
                 <div className="bg-white rounded-[2.5rem] overflow-hidden">
                   <img 
                     src={phoneImage} 
-                    alt="Trick or Treat App Interface" 
+                    alt="Trick or Treet App Interface" 
                     className="w-full h-[600px] object-cover"
                   />
                 </div>

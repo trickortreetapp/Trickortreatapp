@@ -47,7 +47,7 @@ export function HeroSection({ heroImage }: HeroSectionProps) {
             </div>
             
             <h1 className="text-5xl lg:text-6xl font-bold text-[#5d4037] mb-6 leading-tight">
-              Trick or Treat
+              Trick or Treet
               <span className="text-[#e91e63] block">Your Heart</span>
             </h1>
             

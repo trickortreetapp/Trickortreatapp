@@ -1,12 +1,12 @@
 import { Button } from "./ui/button";
-import trickortreetlogo from 'figma:asset/6e9307182f6f82b1614fc58a607c823a25b97592.png';
+import trickortreetlogo from '../assets/trickortreetlogo.png';
 
 export function Header() {
   return (
     <header className="bg-white/80 backdrop-blur-sm border-b border-orange-100 sticky top-0 z-50">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <div className="flex items-center">
-          <img src={trickortreetlogo} alt="Trick or Treat Logo" className="h-16 w-auto" />
+          <img src={trickortreetlogo} alt="Trick or Treet Logo" className="h-16 w-auto" />
         </div>
         
         <nav className="hidden md:flex items-center gap-6">

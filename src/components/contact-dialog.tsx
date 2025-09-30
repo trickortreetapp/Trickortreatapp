@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -6,7 +6,7 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Mail, MessageSquare, Heart } from "lucide-react";
-import { toast } from "sonner@2.0.3";
+import { toast } from "sonner";
 
 interface ContactDialogProps {
   isOpen: boolean;
@@ -22,7 +22,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
     category: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     // Simulate form submission
@@ -41,7 +41,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
   };
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({
+  setFormData((prev: typeof formData) => ({
       ...prev,
       [field]: value
     }));
@@ -74,7 +74,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                     id="name"
                     type="text"
                     value={formData.name}
-                    onChange={(e) => handleInputChange("name", e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange("name", e.target.value)}
                     className="bg-white/80 border-[#ff5722]/20 focus:border-[#ff5722] focus:ring-[#ff5722]/20"
                     placeholder="Your full name"
                     required
@@ -87,7 +87,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                     id="email"
                     type="email"
                     value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange("email", e.target.value)}
                     className="bg-white/80 border-[#ff5722]/20 focus:border-[#ff5722] focus:ring-[#ff5722]/20"
                     placeholder="your@email.com"
                     required
@@ -97,7 +97,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
               
               <div className="space-y-2">
                 <Label htmlFor="category" className="text-[#5d4037]">Category</Label>
-                <Select value={formData.category} onValueChange={(value) => handleInputChange("category", value)}>
+                <Select value={formData.category} onValueChange={(value: string) => handleInputChange("category", value)}>
                   <SelectTrigger className="bg-white/80 border-[#ff5722]/20 focus:border-[#ff5722] focus:ring-[#ff5722]/20">
                     <SelectValue placeholder="What can we help you with?" />
                   </SelectTrigger>
@@ -118,7 +118,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                   id="subject"
                   type="text"
                   value={formData.subject}
-                  onChange={(e) => handleInputChange("subject", e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange("subject", e.target.value)}
                   className="bg-white/80 border-[#ff5722]/20 focus:border-[#ff5722] focus:ring-[#ff5722]/20"
                   placeholder="Brief subject line"
                   required
@@ -130,7 +130,7 @@ export function ContactDialog({ isOpen, onClose }: ContactDialogProps) {
                 <Textarea
                   id="message"
                   value={formData.message}
-                  onChange={(e) => handleInputChange("message", e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => handleInputChange("message", e.target.value)}
                   className="bg-white/80 border-[#ff5722]/20 focus:border-[#ff5722] focus:ring-[#ff5722]/20 min-h-[120px] resize-none"
                   placeholder="Tell us more about your inquiry..."
                   required

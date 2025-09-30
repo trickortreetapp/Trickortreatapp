@@ -5,7 +5,7 @@ import {
   Twitter,
   Facebook,
 } from "lucide-react";
-import trickortreetlogo from "figma:asset/6e9307182f6f82b1614fc58a607c823a25b97592.png";
+import trickortreetlogo from "../assets/trickortreatlogotrans.png";
 import { ContactDialog } from "./contact-dialog";
 
 export function Footer() {
@@ -20,7 +20,7 @@ export function Footer() {
             <div className="flex items-center mb-6">
               <img
                 src={trickortreetlogo}
-                alt="Trick or Treat Logo"
+                alt="Trick or Treet Logo"
                 className="h-20 w-auto"
               />
             </div>
@@ -81,7 +81,7 @@ export function Footer() {
         {/* Social and copyright */}
         <div className="border-t border-gray-300 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-[#8d6e63] text-sm">
-            © 2024 Trick or Treat Dating. All rights reserved.
+            © 2024 Trick or Treet Dating. All rights reserved.
           </div>
 
           <div className="flex items-center gap-6">
