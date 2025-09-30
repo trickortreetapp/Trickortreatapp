@@ -4,10 +4,26 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Badge } from "./ui/badge";
-import { Lock, Mail, Sparkles, Crown, Users, MapPin, User, Star, Gift } from "lucide-react";
+
+import { Lock, Mail, Sparkles, Crown, MapPin, User, Star, Gift } from "lucide-react";
 
 export function EarlyAccess() {
+  const getOnboardingTip = () => {
+    if (formData.selection === "treat") {
+      return {
+        icon: "🎁",
+        text: "You'll discover how to receive love and attention while enjoying surprises.",
+        color: "from-pink-100 to-rose-100 border-pink-200"
+      };
+    } else if (formData.selection === "trick") {
+      return {
+        icon: "🎩",
+        text: "You'll learn how to charm with thoughtful gestures and win their hearts.",
+        color: "from-orange-100 to-amber-100 border-orange-200"
+      };
+    }
+    return null;
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +31,6 @@ export function EarlyAccess() {
     country: "",
     selection: ""
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData((prev) => ({
@@ -23,117 +38,59 @@ export function EarlyAccess() {
       [field]: value,
     }));
   };
-
-  const getOnboardingTip = () => {
-    if (formData.selection === "treat") {
-      return {
-        icon: "🎁",
-        text: "You'll discover how to receive love and attention while enjoying surprises.",
-        color: "from-pink-100 to-rose-100 border-pink-200",
-      };
-    } else if (formData.selection === "trick") {
-      return {
-        icon: "🎩",
-        text: "You'll learn how to charm with thoughtful gestures and win their hearts.",
-        color: "from-orange-100 to-amber-100 border-orange-200",
-      };
-    }
-    return null;
-  };
-
-  if (isSubmitted) {
-    return (
-      <section id="early-access" className="py-20 bg-[#fefbf8] text-[#5d4037]">
-        <div className="container mx-auto px-4 text-center">
-          <div className="max-w-2xl mx-auto">
-            <div className="mb-8">
-              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-[#ff5722] to-[#e64a19] rounded-full mb-6 shadow-lg">
-                <Sparkles className="h-12 w-12 text-white animate-pulse" />
-              </div>
-              <h2 className="text-4xl font-bold mb-4">You're In! 🎃</h2>
-              <p className="text-xl text-[#8d6e63]">
-                Welcome to the inner circle, {formData.name}! You'll be the first to know when the magic begins!
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 mt-12">
-              <div className="text-center bg-white rounded-2xl p-6 shadow-lg">
-                <div className="text-4xl mb-3">👑</div>
-                <p className="text-sm text-[#8d6e63]">VIP Early Access</p>
-              </div>
-              <div className="text-center bg-white rounded-2xl p-6 shadow-lg">
-                <div className="text-4xl mb-3">💎</div>
-                <p className="text-sm text-[#8d6e63]">Exclusive Perks</p>
-              </div>
-              <div className="text-center bg-white rounded-2xl p-6 shadow-lg">
-                <div className="text-4xl mb-3">🎁</div>
-                <p className="text-sm text-[#8d6e63]">Launch Day Bonus</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
   return (
-    <section
+  <section
       id="early-access"
-      className="py-20 bg-gradient-to-br from-[#fefbf8] via-[#fff8f3] to-[#fff3e0] text-[#5d4037] relative overflow-hidden"
+      className="py-24 px-2 md:px-0 bg-gradient-to-br from-[#fff3e0] via-[#fff8f3] to-[#fefbf8] text-[#4e342e] min-h-screen flex items-center justify-center relative overflow-hidden"
+      style={{ fontFamily: 'Inter, sans-serif' }}
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 left-10 text-[#ff5722] text-6xl animate-pulse opacity-20">🔮</div>
-        <div className="absolute top-20 right-20 text-[#e91e63] text-4xl animate-bounce opacity-20">✨</div>
-        <div className="absolute bottom-20 left-20 text-[#ff5722] text-5xl animate-pulse opacity-20">🎭</div>
-        <div className="absolute bottom-10 right-10 text-[#e91e63] text-6xl animate-bounce opacity-20">💫</div>
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-r from-[#ff5722]/10 to-[#e91e63]/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-40 h-40 bg-gradient-to-r from-[#e91e63]/10 to-[#ff7043]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      {/* Figma-style background decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-0 w-40 h-40 bg-gradient-to-br from-[#ff5722]/20 to-[#e91e63]/10 rounded-full blur-3xl opacity-60 animate-pulse" />
+        <div className="absolute bottom-0 right-0 w-56 h-56 bg-gradient-to-br from-[#e91e63]/20 to-[#ff7043]/10 rounded-full blur-3xl opacity-60 animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-[#ff5722]/10 to-[#e91e63]/10 rounded-full blur-3xl opacity-40 animate-pulse" />
       </div>
-
-      <div className="container mx-auto px-4 text-center relative">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="mb-12">
-            <Badge className="bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white px-6 py-3 rounded-full mb-6 inline-flex items-center gap-2 shadow-lg animate-pulse">
-              <Lock className="h-4 w-4" />
-              Invitation Only
-              <Star className="h-4 w-4" />
-            </Badge>
-            <h2 className="text-4xl lg:text-6xl font-bold text-[#5d4037] mb-6 leading-tight">
-              Something Magical{" "}
-              <span className="text-transparent bg-gradient-to-r from-[#ff5722] to-[#e91e63] bg-clip-text block">
-                Is Coming...
-              </span>
-            </h2>
-            <p className="text-xl text-[#8d6e63] mb-8 max-w-2xl mx-auto leading-relaxed">
-              The most exclusive dating experience is almost here. Where stunning ladies meet generous gentlemen, and
-              every connection is worth the wait. 🎩💎
-            </p>
+      <div className="w-full max-w-2xl mx-auto z-10">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#ff5722] to-[#e91e63] text-white shadow-lg text-lg font-semibold tracking-wide animate-pulse">
+            <Lock className="h-5 w-5" />
+            Invitation Only
+            <Star className="h-5 w-5" />
           </div>
-
-          {/* Form */}
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-2xl max-w-2xl mx-auto mb-12 overflow-hidden">
-            <div className="bg-gradient-to-r from-[#ff5722] to-[#e91e63] p-6 text-white">
-              <div className="flex items-center justify-center gap-3 mb-2">
-                <Crown className="h-6 w-6" />
-                <h3 className="text-2xl font-bold">Get VIP Early Access</h3>
-                <Gift className="h-6 w-6" />
-              </div>
-              <p className="text-white/90 text-sm">Join the exclusive circle of early adopters</p>
+          <h2 className="mt-8 mb-4 text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-[#4e342e]">
+            Something Magical
+            <span className="block text-transparent bg-gradient-to-r from-[#ff5722] to-[#e91e63] bg-clip-text">Is Coming...</span>
+          </h2>
+          <p className="text-lg md:text-xl text-[#8d6e63] max-w-xl mx-auto leading-relaxed">
+            The most exclusive dating experience is almost here. Where stunning ladies meet generous gentlemen, and every connection is worth the wait. 🎩💎
+          </p>
+        </div>
+        <Card className="bg-white/90 backdrop-blur-lg border-0 shadow-2xl max-w-2xl mx-auto mb-12 overflow-hidden">
+          <div className="bg-gradient-to-r from-[#ff5722] to-[#e91e63] p-8 text-white flex flex-col items-center">
+            <div className="flex items-center gap-3 mb-2">
+              <Crown className="h-7 w-7" />
+              <h3 className="text-2xl md:text-3xl font-bold tracking-tight">Get VIP Early Access</h3>
+              <Gift className="h-7 w-7" />
             </div>
-
-            <CardContent className="p-8">
-              <form
-                action="https://formspree.io/f/mnngdjpq"
-                method="POST"
-                onSubmit={() => setIsSubmitted(true)}
-                className="space-y-6"
-              >
+            <p className="text-white/90 text-base md:text-lg">Join the exclusive circle of early adopters</p>
+          </div>
+          <CardContent className="p-10 md:p-12">
+            <form
+              action="https://formspree.io/f/mnngdjpq"
+              method="POST"
+              className="space-y-7"
+              autoComplete="off"
+            >
+              {/* Honeypot field for spam protection */}
+              <div style={{ display: 'none' }} aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
                 {/* Full Name */}
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="flex items-center gap-2 text-sm font-medium text-[#5d4037]">
-                    <User className="h-4 w-4 text-[#ff5722]" />
+                  <Label htmlFor="name" className="flex items-center gap-2 text-base font-medium text-[#5d4037]">
+                    <User className="h-5 w-5 text-[#ff5722]" />
                     Full Name
                   </Label>
                   <Input
@@ -144,13 +101,13 @@ export function EarlyAccess() {
                     value={formData.name}
                     onChange={(e) => handleInputChange("name", e.target.value)}
                     required
+                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
                   />
                 </div>
-
                 {/* Email */}
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="flex items-center gap-2 text-sm font-medium text-[#5d4037]">
-                    <Mail className="h-4 w-4 text-[#ff5722]" />
+                  <Label htmlFor="email" className="flex items-center gap-2 text-base font-medium text-[#5d4037]">
+                    <Mail className="h-5 w-5 text-[#ff5722]" />
                     Email Address
                   </Label>
                   <Input
@@ -161,109 +118,111 @@ export function EarlyAccess() {
                     value={formData.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     required
+                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
                   />
                 </div>
-
-                {/* City + Country */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <Label htmlFor="city" className="flex items-center gap-2 text-sm font-medium text-[#5d4037]">
-                      <MapPin className="h-4 w-4 text-[#ff5722]" />
-                      City
-                    </Label>
-                    <Input
-                      id="city"
-                      name="city"
-                      type="text"
-                      placeholder="Your city"
-                      value={formData.city}
-                      onChange={(e) => handleInputChange("city", e.target.value)}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="country" className="flex items-center gap-2 text-sm font-medium text-[#5d4037]">
-                      🌍 Country
-                    </Label>
-                    <Input
-                      id="country"
-                      name="country"
-                      type="text"
-                      placeholder="Your country"
-                      value={formData.country}
-                      onChange={(e) => handleInputChange("country", e.target.value)}
-                      required
-                    />
-                  </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+                {/* City */}
+                <div className="space-y-2">
+                  <Label htmlFor="city" className="flex items-center gap-2 text-base font-medium text-[#5d4037]">
+                    <MapPin className="h-5 w-5 text-[#ff5722]" />
+                    City
+                  </Label>
+                  <Input
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="Your city"
+                    value={formData.city}
+                    onChange={(e) => handleInputChange("city", e.target.value)}
+                    required
+                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
+                  />
                 </div>
-
-                {/* Trick / Treat */}
-                <div className="space-y-4">
-                  <Label className="block text-sm font-medium text-[#5d4037] text-center">Choose Your Role</Label>
-                  <RadioGroup
-                    value={formData.selection}
-                    onValueChange={(value: string) => handleInputChange("selection", value)}
-                    className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                  >
-                    <div className="group">
-                      <div
-                        className={`flex items-center space-x-3 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-6 cursor-pointer ${
-                          formData.selection === "trick" ? "ring-2 ring-[#ff5722] border-[#ff5722]" : ""
-                        }`}
-                      >
-                        <RadioGroupItem id="trick" value="trick" name="selection" className="border-orange-400" />
-                        <Label htmlFor="trick" className="flex items-center gap-3 flex-1 cursor-pointer">
-                          <span className="text-3xl">🎩</span>
-                          <div>
-                            <div className="font-semibold">Trick</div>
-                            <div className="text-xs text-[#8d6e63]">Be the charmer</div>
-                          </div>
-                        </Label>
-                      </div>
-                    </div>
-                    <div className="group">
-                      <div
-                        className={`flex items-center space-x-3 bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-6 cursor-pointer ${
-                          formData.selection === "treat" ? "ring-2 ring-[#e91e63] border-[#e91e63]" : ""
-                        }`}
-                      >
-                        <RadioGroupItem id="treat" value="treat" name="selection" className="border-pink-400" />
-                        <Label htmlFor="treat" className="flex items-center gap-3 flex-1 cursor-pointer">
-                          <span className="text-3xl">🎁</span>
-                          <div>
-                            <div className="font-semibold">Treat</div>
-                            <div className="text-xs text-[#8d6e63]">Enjoy the magic</div>
-                          </div>
-                        </Label>
-                      </div>
-                    </div>
-                  </RadioGroup>
+                {/* Country */}
+                <div className="space-y-2">
+                  <Label htmlFor="country" className="flex items-center gap-2 text-base font-medium text-[#5d4037]">
+                    <span role="img" aria-label="Country" className="text-[#ff5722]">🌍</span>
+                    Country
+                  </Label>
+                  <Input
+                    id="country"
+                    name="country"
+                    type="text"
+                    placeholder="Your country"
+                    value={formData.country}
+                    onChange={(e) => handleInputChange("country", e.target.value)}
+                    required
+                    className="rounded-xl border border-[#ff5722]/30 focus:border-[#ff5722] focus:ring-2 focus:ring-[#ff5722]/20 px-4 py-3 text-base"
+                  />
                 </div>
-
-                {/* Optional onboarding tip */}
-                {getOnboardingTip() && (
-                  <div
-                    className={`bg-gradient-to-r ${getOnboardingTip()?.color} border-2 rounded-2xl p-6 transition-all`}
-                  >
-                    <div className="flex items-start gap-4">
-                      <span className="text-3xl">{getOnboardingTip()?.icon}</span>
-                      <p className="text-sm text-[#5d4037] font-medium">{getOnboardingTip()?.text}</p>
-                    </div>
-                  </div>
-                )}
-
-                <Button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-4 font-bold text-lg"
+              </div>
+              {/* Trick / Treat */}
+              <div className="space-y-4">
+                <Label className="block text-base font-semibold text-[#5d4037] text-center mb-2">Choose Your Role</Label>
+                <RadioGroup
+                  value={formData.selection}
+                  onValueChange={(value: string) => handleInputChange("selection", value)}
+                  className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                  name="selection"
                 >
-                  <Lock className="h-5 w-5 mr-2" />
-                  Secure My VIP Spot
-                  <Sparkles className="h-5 w-5 ml-2" />
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
-        </div>
+                  <div className="group">
+                    <div
+                      className={`flex items-center space-x-3 bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-orange-200 rounded-2xl p-6 cursor-pointer transition-all duration-200 ${
+                        formData.selection === "trick" ? "ring-2 ring-[#ff5722] border-[#ff5722] scale-105" : ""
+                      }`}
+                    >
+                      <RadioGroupItem id="trick" value="trick" name="selection" className="border-orange-400" />
+                      <Label htmlFor="trick" className="flex items-center gap-3 flex-1 cursor-pointer">
+                        <span className="text-3xl">🎩</span>
+                        <div>
+                          <div className="font-semibold">Trick</div>
+                          <div className="text-xs text-[#8d6e63]">Be the charmer</div>
+                        </div>
+                      </Label>
+                    </div>
+                  </div>
+                  <div className="group">
+                    <div
+                      className={`flex items-center space-x-3 bg-gradient-to-br from-pink-50 to-rose-50 border-2 border-pink-200 rounded-2xl p-6 cursor-pointer transition-all duration-200 ${
+                        formData.selection === "treat" ? "ring-2 ring-[#e91e63] border-[#e91e63] scale-105" : ""
+                      }`}
+                    >
+                      <RadioGroupItem id="treat" value="treat" name="selection" className="border-pink-400" />
+                      <Label htmlFor="treat" className="flex items-center gap-3 flex-1 cursor-pointer">
+                        <span className="text-3xl">🎁</span>
+                        <div>
+                          <div className="font-semibold">Treat</div>
+                          <div className="text-xs text-[#8d6e63]">Enjoy the magic</div>
+                        </div>
+                      </Label>
+                    </div>
+                  </div>
+                </RadioGroup>
+              </div>
+              {/* Optional onboarding tip */}
+              {getOnboardingTip() && (
+                <div
+                  className={`bg-gradient-to-r ${getOnboardingTip()?.color} border-2 rounded-2xl p-6 transition-all mt-2`}
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="text-3xl">{getOnboardingTip()?.icon}</span>
+                    <p className="text-sm text-[#5d4037] font-medium">{getOnboardingTip()?.text}</p>
+                  </div>
+                </div>
+              )}
+              <Button
+                type="submit"
+                className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-4 font-bold text-lg shadow-lg hover:scale-[1.03] hover:shadow-xl transition-all duration-200"
+              >
+                <Lock className="h-5 w-5 mr-2" />
+                Secure My VIP Spot
+                <Sparkles className="h-5 w-5 ml-2" />
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
