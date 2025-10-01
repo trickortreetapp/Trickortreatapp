@@ -218,14 +218,35 @@ export function EarlyAccess() {
                 </div>
 
                 {/* Trick/Treat */}
-                <RadioGroup
-                  value={formData.selection}
-                  onValueChange={(value: string) => handleInputChange("selection", value)}
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-                >
-                  <RadioGroupItem value="trick" id="trick" /> Trick 🎩
-                  <RadioGroupItem value="treat" id="treat" /> Treat 🎁
-                </RadioGroup>
+                <div className="space-y-2">
+                  <Label className="block text-base font-semibold text-[#5d4037] text-center mb-2">Choose Your Role</Label>
+                  <RadioGroup
+                    value={formData.selection}
+                    onValueChange={(value: string) => handleInputChange("selection", value)}
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+                  >
+                    <div className={`group transition-all duration-200 ${formData.selection === 'trick' ? 'ring-2 ring-[#ff5722] border-[#ff5722] scale-105 bg-amber-100/80' : 'hover:bg-amber-100/60'} rounded-2xl border-2 border-orange-200 p-6 cursor-pointer shadow-sm`}> 
+                      <RadioGroupItem value="trick" id="trick" className="border-orange-400 size-5 mr-3" />
+                      <Label htmlFor="trick" className="flex items-center gap-3 cursor-pointer">
+                        <span className="text-3xl">🎩</span>
+                        <div>
+                          <div className="font-semibold">Trick</div>
+                          <div className="text-xs text-[#8d6e63]">Be the charmer</div>
+                        </div>
+                      </Label>
+                    </div>
+                    <div className={`group transition-all duration-200 ${formData.selection === 'treat' ? 'ring-2 ring-[#e91e63] border-[#e91e63] scale-105 bg-pink-100/80' : 'hover:bg-pink-100/60'} rounded-2xl border-2 border-pink-200 p-6 cursor-pointer shadow-sm`}> 
+                      <RadioGroupItem value="treat" id="treat" className="border-pink-400 size-5 mr-3" />
+                      <Label htmlFor="treat" className="flex items-center gap-3 cursor-pointer">
+                        <span className="text-3xl">🎁</span>
+                        <div>
+                          <div className="font-semibold">Treat</div>
+                          <div className="text-xs text-[#8d6e63]">Enjoy the magic</div>
+                        </div>
+                      </Label>
+                    </div>
+                  </RadioGroup>
+                </div>
 
                 {/* Onboarding Tip */}
                 {getOnboardingTip() && (
@@ -239,7 +260,7 @@ export function EarlyAccess() {
                 {/* Submit */}
                 <Button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-4 font-bold"
+                  className="w-full bg-gradient-to-r from-[#ff5722] to-[#e64a19] text-white rounded-2xl py-5 font-bold text-lg shadow-lg hover:scale-[1.04] hover:shadow-xl transition-all duration-200 focus:ring-2 focus:ring-[#ff5722]/40"
                   disabled={state.submitting}
                 >
                   <Lock className="h-5 w-5 mr-2" />
